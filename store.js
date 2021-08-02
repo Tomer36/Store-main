@@ -231,16 +231,28 @@ function ADDITEM(event) {
         alert('Nothing changed')
     }
 }
+function sort(a, b) {
+    if (a < b) { return -1; }
+    if (a > b) { return 1; }
+    return 0;
+}
+
 
 function addItemToCart(title) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+    var temp
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
             alert('This item is already added to the cart')
             return
+        }
+        if(sort(cartItemNames[i].innerText, title) == 1){
+            temp = cartItemNames[i].innerText
+            cartItemNames[i].innerText = title
+            title = temp
         }
     }
     var cartRowContents = `
