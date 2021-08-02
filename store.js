@@ -58,21 +58,20 @@ function removeCartItem(event) {
 function PurchaseClicked1(event) {
     var button = event.target
     var shopItem = button.parentElement.parentElement
+    var cartItems = document.getElementsByClassName('cart-items')[0]
+    var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
     var check = shopItem.getElementsByClassName('btn-success')[0].innerHTML
     var qty = shopItem.getElementsByClassName('cart-quantity-input')[0].value
     var title = shopItem.getElementsByClassName('cart-item-title')[0].innerText
     if (check == 'PURCHASE') {
-        shopItem.getElementsByClassName('btn-success')[0].innerHTML = 'PURCHACED'
-        shopItem.getElementsByClassName("cart-item-title")[0].style.backgroundColor = "lightgreen";
-        shopItem.getElementsByClassName("btn-danger")[0].style.display = "none";
-        shopItem.getElementsByClassName("cart-quantity-input")[0].readOnly = true;
+        shopItem.remove()
+        addItemToCartPurchased(title)
 
     } else {
-        shopItem.getElementsByClassName('btn-success')[0].innerHTML = 'PURCHASE'
-        shopItem.getElementsByClassName("cart-item-title")[0].style.backgroundColor = "white";
-        shopItem.getElementsByClassName("btn-danger")[0].style.display = "block";
-        shopItem.getElementsByClassName("cart-quantity-input")[0].readOnly = false;
+        shopItem.remove()
+        addItemToCart(title)
     }
+    
 }
 
 
@@ -267,12 +266,43 @@ function addItemToCart(title) {
             &nbsp;&nbsp;&nbsp;
             <button class="btn btn-secondary" type="button">Save To DB</button>
         </div>`
+        
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     cartRow.getElementsByClassName('btn-secondary')[0].addEventListener('click', saveToDB)
     cartRow.getElementsByClassName('btn-success')[0].addEventListener('click', PurchaseClicked1)
     cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+}
+
+
+function addItemToCartPurchased(title) {
+    var cartRow = document.createElement('div')
+    cartRow.classList.add('cart-row')
+    var cartItems = document.getElementsByClassName('cart-items')[0]
+    var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+    var temp
+    for (var i = 0; i < cartItemNames.length; i++) {
+        if (cartItemNames[i].innerText == title) {
+            alert('This item is already added to the cart')
+            return
+        }
+    }
+    var cartRowContents = `
+        <div class="cart-item cart-column">
+            <span class="cart-item-title" style ="background-color:lightgreen">${title}</span>
+        </div>
+        <div class="cart-quantity cart-column">
+            <input class="cart-quantity-input" type="number" value="1" readonly>
+            <button class="btn btn-success" type="button">PURCHASED</button>
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-secondary" type="button">Save To DB</button>
+        </div>`
+        
+    cartRow.innerHTML = cartRowContents
+    cartItems.append(cartRow)
+    cartRow.getElementsByClassName('btn-secondary')[0].addEventListener('click', saveToDB)
+    cartRow.getElementsByClassName('btn-success')[0].addEventListener('click', PurchaseClicked1)
 }
 
 
@@ -350,6 +380,3 @@ window.onclick = function (event) {
         }
     }
 }
-
-
-
