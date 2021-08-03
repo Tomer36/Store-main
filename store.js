@@ -28,18 +28,6 @@ function ready() {
         button.addEventListener('click', ADDITEM)
     }
 }
-
-function purchaseClicked(event) {
-    var button = event.target
-    var shopItem = button.parentElement.parentElement
-    var title = shopItem.getElementsByClassName('cart-item-title')[0].innerText
-    var r = confirm("Are you sure you want to Purchase the item: " + title + "?");
-    if (r == true) {
-        var buttonClicked = event.target
-        shopItem.style.textDecoration = 'line-through';
-    }
-}
-
 function removeCartItem(event) {
     var button = event.target
     var shopItem = button.parentElement.parentElement
@@ -71,7 +59,7 @@ function PurchaseClicked1(event) {
         shopItem.remove()
         addItemToCart(title)
     }
-    
+
 }
 
 
@@ -187,7 +175,18 @@ function viewPrevPurchaces3() {
     });
 }
 
-
+function checkANDview() {
+    $(document).ready(function () {
+        var e = document.getElementById("dates");
+        var strUser = e.value;
+        if (strUser == "date1") {
+            viewPrevPurchaces();
+        }
+        else {
+            viewPrevPurchaces2();
+        }
+    });
+}
 
 function quantityChanged(event) {
     var input = event.target
@@ -248,7 +247,7 @@ function addItemToCart(title) {
             alert('This item is already added to the cart')
             return
         }
-        if(sort(cartItemNames[i].innerText, title) == 1){
+        if (sort(cartItemNames[i].innerText, title) == 1) {
             temp = cartItemNames[i].innerText
             cartItemNames[i].innerText = title
             title = temp
@@ -266,7 +265,7 @@ function addItemToCart(title) {
             &nbsp;&nbsp;&nbsp;
             <button class="btn btn-secondary" type="button">Save To DB</button>
         </div>`
-        
+
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
@@ -298,7 +297,7 @@ function addItemToCartPurchased(title) {
             &nbsp;&nbsp;&nbsp;
             <button class="btn btn-secondary" type="button">Save To DB</button>
         </div>`
-        
+
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-secondary')[0].addEventListener('click', saveToDB)
