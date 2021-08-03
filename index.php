@@ -50,7 +50,7 @@
     <nav class="secondary-nav nav">
         <ul>
             <li><button id="ShowBtn" onclick="show()" value="Show Recommended Items">Show Recommended Items</button></li>
-            <button class="btn btn-secondary show-prev" onclick="location.href='item_list.php';" value="item1">Items List</button>
+            <button class="btn btn-secondary show-prev" onclick="location.href='items_list.php';" value="item1">Items List</button>
         </ul>
     </nav>
     <hr class="solid">
