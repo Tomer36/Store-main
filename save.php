@@ -2,7 +2,7 @@
 	include 'dbConnection.php';
 	$title=$_POST['title'];
 	$qty=$_POST['qty'];
-	$sql = "INSERT INTO `final_list`( `title`, `qty` ) 
+	$sql = "INSERT INTO `items`( `title`, `qty` ) 
 	VALUES ('$title','$qty')";
 	if (mysqli_query($conn, $sql)) {
 		echo json_encode(array("statusCode"=>200));
