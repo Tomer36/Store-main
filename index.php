@@ -17,7 +17,7 @@
 
 </head>
 
-<body onload="viewPrevPurchaces3();">
+<body>
     <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
     </div>
@@ -50,27 +50,34 @@
     <nav class="secondary-nav nav">
         <ul>
             <li><button id="ShowBtn" onclick="show()" value="Show Recommended Items">Show Recommended Items</button></li>
-            <button class="btn btn-secondary show-prev" onclick="viewPrevPurchaces()" value="item1">Previous Lists 1</button>
-            <button class="btn btn-secondary show-prev" onclick="viewPrevPurchaces2()" value="item2">Previous Lists 2</button>
+            <button class="btn btn-secondary show-prev" onclick="viewPrevPurchaces()" value="item1">Items List</button>
         </ul>
     </nav>
     <hr class="solid">
     <div class="float-container">
         <div class="float-child">
-            <div id="prevtitle">
-                <h3>Previous Purchased Items:</h3>
-                <div id="table-container">
-                </div>
-            </div>
-        </div>
-        <div class="float-child">
             <div class="list">
                 <h3>Type Items To Add:</h3>
                 <input type="text" class="addItemInput" id="search" placeholder="Typing.."> &nbsp
                 <button class="btn btn-primary list-item-button"> Add Item </button> &nbsp&nbsp
-                <button class="btn btn-danger" type="button" onclick="MakeNewList()" style="background-color: red;color: white;">Make a new List</button> <br> <br>
                 <ul>
                 </ul>
+            </div>
+        </div>
+        <div class="float-child">
+            <div id="prevtitle">
+                <h3>Make New List</h3>
+                <button class="btn-new-list" onclick="newList()">Make Empty List</button>
+                <br><br>
+                <form>
+                    <label for="dates">Choose Previous List</label>
+                    <select name="date" id="dates">
+                        <option value="date1">1/8/2021</option>
+                        <option value="date2">9/8/2021</option>
+                    </select>
+                    <br><br>
+                </form>
+                <button class="btn btn-primary" onclick="checkANDview()">Load</button>
             </div>
         </div>
     </div>
@@ -146,10 +153,9 @@
         }
     }
 
-    function MakeNewList() {
-        var x = document.getElementById('NEW');
-        x.innerHTML = "";
-
+    function newList() {
+        var cartItems = document.getElementsByClassName('cart-items')[0]
+        cartItems.innerHTML = "";
     }
 </script>
 
