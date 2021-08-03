@@ -133,7 +133,7 @@
 
     <footer class="main-footer">
         <div class="container main-footer-container">
-            <h4 class="band-name">L&T Market © 2021 All Rights Reserved</h4>
+            <h4 class="band-name">L&T © 2021 All Rights Reserved</h4>
 
         </div>
     </footer>
