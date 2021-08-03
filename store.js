@@ -164,17 +164,6 @@ function viewPrevPurchaces2() {
     });
 }
 
-function viewPrevPurchaces3() {
-    $.ajax({
-        url: "view_ajax3.php",
-        type: "POST",
-        cache: false,
-        success: function (data) {
-            $('#table-container').html(data);
-        }
-    });
-}
-
 function checkANDview() {
     $(document).ready(function () {
         var e = document.getElementById("dates");
