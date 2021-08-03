@@ -377,6 +377,16 @@ button {
     font-weight: bolder;
     align-items: center;
 }
+.btn-new-list{
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
 
 footer {
     position: fixed;
@@ -419,7 +429,7 @@ footer {
     padding: 3px 12px;
 }
 
-#prevtitle h3 {
+#prevtitle{
     padding-left: 50px;
     text-align: center;
 }
