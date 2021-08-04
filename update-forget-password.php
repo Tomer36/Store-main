@@ -9,7 +9,7 @@ if (isset($_POST['password']) && $_POST['reset_link_token'] && $_POST['email']) 
     if ($row) {
         mysqli_query($conn, "UPDATE users set  pass_word='" . $password . "', reset_link_token='" . NULL . "' ,exp_date='" . NULL . "' WHERE Email='" . $emailId . "'");
         echo '<p>Congratulations! Your password has been updated successfully.</p>';
-        header("Location: Sign_up.php");
+        header("Location: Sign_in.php");
         exit();
     } else {
         echo "<p>Something goes wrong. Please try again</p>";
