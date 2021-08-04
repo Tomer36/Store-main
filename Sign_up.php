@@ -33,7 +33,7 @@
 
 
 
-        $query = "INSERT INTO client(Email, Nickname,Phone,Password) VALUES 
+        $query = "INSERT INTO users(Email, Nickname,Phone,pass_word) VALUES 
             ('$users_Email','$users_Nickname','$users_Phone','$users_Password')";
         if ($conn->query($query) === TRUE) { //if did added to the clients
     ?>
