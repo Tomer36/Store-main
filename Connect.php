@@ -1,22 +1,11 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mydb-main";
+include 'dbConnection.php';
 session_start();
-// Create connection
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error); //the result if we dont have connection to database
-}
-
 $Email = $_POST["Email"]; //set the username from textbox username
 $pass = $_POST["password"]; //set the password from textbox password
 
-$sql = "SELECT Email from client where Email='$Email' AND Password='$pass'"; //searching for what username and password vaild
+$sql = "SELECT Email from users where Email='$Email' AND pass_word='$pass'"; //searching for what username and password vaild
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) { //if result bigger than 0 thats mean password and username is vaild
