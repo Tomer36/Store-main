@@ -57,7 +57,7 @@
                     <h4>Sign Up </h4>
                 </a>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <a href="Password.php" style="display: inline-block;color: blue;">
+                <a href="forget-password.php" style="display: inline-block;color: blue;">
                     <h4>Forgot Your Password?</h4>
                 </a>
             </div>
