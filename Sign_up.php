@@ -22,16 +22,8 @@
     </header>
     <br>
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "mydb-main";
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    //we add a new client to database in this php page
-    if ($conn->connect_error)
-        die("Connection failed: " . $conn->connect_error);
+    include 'dbConnection.php';
+
     if ($_POST) {
         $users_Email = $_POST['Email']; //his id to access to account
         $users_Confirm = $_POST['Confirm']; //his firstname
