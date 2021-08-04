@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2021 at 12:08 AM
+-- Generation Time: Aug 05, 2021 at 12:32 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -125,6 +125,30 @@ INSERT INTO `list2` (`title`, `qty`) VALUES
 ('Gum', 1),
 ('IceCream', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `Nickname` varchar(255) NOT NULL,
+  `Email` varchar(320) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `pass_word` varchar(11) NOT NULL,
+  `reset_link_token` varchar(90) NOT NULL,
+  `exp_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `Nickname`, `Email`, `Phone`, `pass_word`, `reset_link_token`, `exp_date`) VALUES
+(1, 'tam', 'Tamer8@live.com', '0546762760', '123', '', '0000-00-00 00:00:00'),
+(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', 'malek', '', '0000-00-00 00:00:00');
+
 --
 -- Indexes for dumped tables
 --
@@ -160,6 +184,14 @@ ALTER TABLE `list2`
   ADD PRIMARY KEY (`title`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `Nickname` (`Nickname`),
+  ADD UNIQUE KEY `Email` (`Email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -168,6 +200,12 @@ ALTER TABLE `list2`
 --
 ALTER TABLE `items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
