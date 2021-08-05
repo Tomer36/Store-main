@@ -1,13 +1,19 @@
 <?php
-	include 'dbConnection.php';
-	$title=$_POST['title'];
-	$qty=$_POST['qty'];
-	$sql = "INSERT INTO `items`( `title`, `qty` ) 
+include 'dbConnection.php';
+$title = $_POST['title'];
+$qty = $_POST['qty'];
+session_start();
+if (isset($_SESSION["Phone"])) //if the client is admin
+	if ($_SESSION["Phone"] == 11) {
+		$sql = "INSERT INTO `family_list`( `title`, `qty` ) 
 	VALUES ('$title','$qty')";
-	if (mysqli_query($conn, $sql)) {
-		echo json_encode(array("statusCode"=>200));
-	} 
-	else {
-		echo json_encode(array("statusCode"=>201));
+	} else {
+		$sql = "INSERT INTO `items`( `title`, `qty` ) 
+	VALUES ('$title','$qty')";
 	}
-	mysqli_close($conn);
+if (mysqli_query($conn, $sql)) {
+	echo json_encode(array("statusCode" => 200));
+} else {
+	echo json_encode(array("statusCode" => 201));
+}
+mysqli_close($conn);
