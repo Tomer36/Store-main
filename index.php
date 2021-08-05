@@ -37,10 +37,17 @@
             <?php
             if (isset($_SESSION['Email'])) { //test if we have a login username
                 print "Hello, " . $_SESSION["Email"];
-                echo "<br>";
-                print "Welcome to our Website";
+                
             ?>
-                <a href="logout.php"><br>Logout</a>
+                <a href="logout.php"><br>-Logout-</a>
+                <?php
+                if (isset($_SESSION["Admin"])) //if the client is admin
+                    if ($_SESSION["Admin"] == 1) {
+                ?>
+                    <a href="">-Admin Privileges-</a>
+                <?php
+                    }
+                ?>
             <?php
             }
             ?>

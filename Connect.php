@@ -1,11 +1,10 @@
 <?php
-
 include 'dbConnection.php';
 session_start();
 $Email = $_POST["Email"]; //set the username from textbox username
 $pass = $_POST["password"]; //set the password from textbox password
 
-$sql = "SELECT Email from users where Email='$Email' AND pass_word='$pass'"; //searching for what username and password vaild
+$sql = "SELECT Email,Admin from users where Email='$Email' AND pass_word='$pass'"; //searching for what username and password vaild
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) { //if result bigger than 0 thats mean password and username is vaild
@@ -15,16 +14,7 @@ if ($result->num_rows > 0) { //if result bigger than 0 thats mean password and u
   $_SESSION["password"] = $pass; //start session to password
   $_SESSION["Email"] = $row["Email"]; //start session of name to print it
   //$_SESSION["LN"] = $row["LastName"]; //start session of lastname to print it!
-  //$_SESSION["Admin"] = $row["Admin"]; //if he an admin the session value will be "1"!
-  if (isset($_COOKIE[$_SESSION['Email']])) //if we have an cookie we put the cookie in session array of items!
-  {
-    $cart = $_COOKIE[$_SESSION['Email']];
-    $_SESSION['cart'] = unserialize($cart);
-    $total = $_COOKIE[$_SESSION['Email'] . "1"];
-    $_SESSION['total'] = $total;
-  } else {
-    $_SESSION['total'] = 0; //if we dont have and cookie we start with 0 items in the card
-  }
+  $_SESSION["Admin"] = $row["Admin"]; //if he an admin the session value will be "1"!
 
   echo "<script type='text/javascript'>alert('Logged in successfuly!');
             window.location.href = ('index.php');
