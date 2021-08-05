@@ -8,12 +8,12 @@ if (isset($_POST['password']) && $_POST['reset_link_token'] && $_POST['email']) 
     $row = mysqli_num_rows($query);
     if ($row) {
         mysqli_query($conn, "UPDATE users set  pass_word='" . $password . "', reset_link_token='" . NULL . "' ,exp_date='" . NULL . "' WHERE Email='" . $emailId . "'");
-        echo '<p>Congratulations! Your password has been updated successfully.</p>';
-        header("Location: Sign_in.php");
-        exit();
+        echo "<script type='text/javascript'>alert('Congratulations! Your password has been updated successfully!');
+            window.location.href = ('Sign_in.php');
+             </script>";
     } else {
-        echo "<p>Something goes wrong. Please try again</p>";
-        header("Location: Sign_in.php");
-        exit();
+        echo "<script type='text/javascript'>alert('Something went wrong! password didn't change');
+            window.location.href = ('Sign_in.php');
+             </script>";
     }
 }
