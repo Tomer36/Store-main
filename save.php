@@ -3,8 +3,8 @@ include 'dbConnection.php';
 $title = $_POST['title'];
 $qty = $_POST['qty'];
 session_start();
-if (isset($_SESSION["Phone"])) //if the client is admin
-	if ($_SESSION["Phone"] == 11) {
+if (isset($_SESSION["family_list"])) //if the client is admin
+	if ($_SESSION["family_list"] == 1) {
 		$sql = "INSERT INTO `family_list`( `title`, `qty` ) 
 	VALUES ('$title','$qty')";
 	} else {
