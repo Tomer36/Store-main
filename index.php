@@ -37,7 +37,7 @@
             <?php
             if (isset($_SESSION['Email'])) { //test if we have a login username
                 print "Hello, " . $_SESSION["Email"];
-                
+
             ?>
                 <a href="logout.php"><br>Logout</a>
                 <?php
@@ -46,8 +46,13 @@
                 ?>
                     <a href="">Admin Privileges</a>
                 <?php
+                    } else {
+                ?>
+                    <a href="family_request_forum.php">Family Member Request</a>
+                <?php
                     }
                 ?>
+
             <?php
             }
             ?>
@@ -57,7 +62,7 @@
     <nav class="secondary-nav nav">
         <ul>
             <li><button id="ShowBtn" onclick="show()" value="Show Recommended Items">Show Recommended Items</button></li>
-            <button class="btn btn-secondary show-prev" onclick="location.href='items_list.php';" value="item1">Items List</button>
+            <button class="btn btn-secondary show-prev" onclick="location.href='items_list.php';" value="item1">Edit Items List</button>
         </ul>
     </nav>
     <hr class="solid">
