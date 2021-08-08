@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2021 at 03:11 AM
+-- Generation Time: Aug 08, 2021 at 03:31 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -60,7 +60,9 @@ CREATE TABLE `family_list` (
 INSERT INTO `family_list` (`title`, `qty`) VALUES
 ('asd', 1),
 ('dod', 1),
-('ssss', 1);
+('mnikeeeee', 1),
+('ssss', 1),
+('zomba', 1);
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,14 @@ CREATE TABLE `items` (
 INSERT INTO `items` (`id`, `title`, `qty`) VALUES
 (5, 'Milk', 1),
 (7, 'Banana', 2),
-(8, 'Doretos', 22);
+(8, 'Doretos', 22),
+(14, 'asd', 1),
+(16, 'aweha', 1),
+(17, 'aweha', 1),
+(18, 'izi', 1),
+(19, 'mozika', 1),
+(20, 'mozez', 1),
+(21, 'bolamone', 1);
 
 -- --------------------------------------------------------
 
@@ -157,7 +166,9 @@ CREATE TABLE `users` (
   `pass_word` varchar(11) NOT NULL,
   `reset_link_token` varchar(90) NOT NULL,
   `exp_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `family_list` varchar(11) NOT NULL,
+  `email_verification_link` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `family_list` varchar(11) DEFAULT '0',
   `Admin` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -165,10 +176,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `Nickname`, `Email`, `Phone`, `pass_word`, `reset_link_token`, `exp_date`, `family_list`, `Admin`) VALUES
-(1, 'tam', 'Tamer8@live.com', '0546762760', '123', '', '2021-08-05 22:07:44', '1', 1),
-(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', 'malek', '', '0000-00-00 00:00:00', '0', 0),
-(3, 'tam', 'test@gmail.com', '123123123', '123', '', '2021-08-04 21:26:00', '0', 0);
+INSERT INTO `users` (`id`, `Nickname`, `Email`, `Phone`, `pass_word`, `reset_link_token`, `exp_date`, `email_verification_link`, `email_verified_at`, `family_list`, `Admin`) VALUES
+(1, 'tam', 'Tamer8@live.com', '0546762760', '123', '', '2021-08-07 22:36:50', '', NULL, '33', 1),
+(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', 'malek', '', '2021-08-08 01:27:46', '53b89c97de0788d005fad79f67a304e65195', '2021-08-08 00:27:46', '33', 0),
+(3, 'tam', 'test@gmail.com', '123123123', '123', '', '2021-08-08 00:57:35', '', NULL, '0', 0);
 
 --
 -- Indexes for dumped tables
@@ -225,7 +236,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
