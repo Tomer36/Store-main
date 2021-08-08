@@ -20,7 +20,7 @@ if (isset($_POST['password-reset-token']) && $_POST['email']) {
 
     mysqli_query($conn, "UPDATE users set  email_verification_link ='" . $token . "' WHERE Email='" . $_POST['email'] . "'");
 
-    $link = "<a href='localhost/myProject/Store-main/verify-email.php?key=" . $_POST['email'] . "&token=" . $token . "'>Click and Verify Email</a>";
+    $link = "<a href='localhost/myProject/Store-main/family-verify-email.php?key=" . $_POST['email'] . "&token=" . $token . "'>Click and Verify Email</a>";
 
     $mail = new PHPMailer();
 
@@ -53,11 +53,16 @@ if (isset($_POST['password-reset-token']) && $_POST['email']) {
     <?php
     } else {
     ?>
-<?php
+    <?php
       echo "Mail Error - >" . $mail->ErrorInfo;
     }
   } else {
-    echo "You Already a member in the family.";
+    ?>
+    echo <script type='text/javascript'>
+      alert('You Already A Family Member');
+      window.location.href = "index.php";
+    </script>";
+<?php
   }
 }
 ?>

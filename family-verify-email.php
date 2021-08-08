@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>User Account Activation by Email Verification using PHP</title>
+  <title>Family Member Verified</title>
   <!-- CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -41,7 +41,7 @@
       mysqli_query($conn, "UPDATE users set family_list = '" . $stat . "' , email_verified_at ='" . $d . "' WHERE Email='" . $email . "'");
       $link2 = "<a href='localhost/myProject/Store-main/Sign_in.php'>Click and Sign In</a>";
 
-      $msg = "Member Joined";
+      $msg = "Member Joined Family, Verification Mail Sent !!";
       $mail2 = new PHPMailer();
       $mail2->CharSet =  "utf-8";
       $mail2->IsSMTP();
@@ -76,7 +76,7 @@
   <div class="container mt-3">
     <div class="card">
       <div class="card-header text-center">
-        User Account Activation by Email Verification using PHP
+        Admin Family Member Activation
       </div>
       <div class="card-body">
         <p><?php echo $msg; ?></p>

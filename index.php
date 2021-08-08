@@ -44,7 +44,7 @@
                 if (isset($_SESSION["Admin"])) //if the client is admin
                     if ($_SESSION["Admin"] == 1) {
                 ?>
-                    <a href="">Admin Privileges</a>
+                    <a href="family-members-control.php">Admin Privileges</a>
                 <?php
                     } else {
                 ?>
