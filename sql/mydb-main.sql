@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2021 at 03:31 AM
+-- Generation Time: Aug 12, 2021 at 03:49 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -24,31 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
---
-
-CREATE TABLE `client` (
-  `Email` text NOT NULL,
-  `Nickname` text NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `client`
---
-
-INSERT INTO `client` (`Email`, `Nickname`, `Phone`, `Password`) VALUES
-('Louai@Hotmail.com', 'Louai', '0546101420', 'L123'),
-('Tamer8@live.com', 'tam', '0546762760', '123');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `family_list`
 --
 
 CREATE TABLE `family_list` (
+  `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `qty` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -57,58 +37,12 @@ CREATE TABLE `family_list` (
 -- Dumping data for table `family_list`
 --
 
-INSERT INTO `family_list` (`title`, `qty`) VALUES
-('asd', 1),
-('dod', 1),
-('mnikeeeee', 1),
-('ssss', 1),
-('zomba', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `final_list`
---
-
-CREATE TABLE `final_list` (
-  `title` varchar(100) NOT NULL,
-  `qty` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `final_list`
---
-
-INSERT INTO `final_list` (`title`, `qty`) VALUES
-('Chips', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `items`
---
-
-CREATE TABLE `items` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `qty` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `items`
---
-
-INSERT INTO `items` (`id`, `title`, `qty`) VALUES
-(5, 'Milk', 1),
-(7, 'Banana', 2),
-(8, 'Doretos', 22),
-(14, 'asd', 1),
-(16, 'aweha', 1),
-(17, 'aweha', 1),
-(18, 'izi', 1),
-(19, 'mozika', 1),
-(20, 'mozez', 1),
-(21, 'bolamone', 1);
+INSERT INTO `family_list` (`id`, `title`, `qty`) VALUES
+(1, 'Tuna', 22),
+(2, 'Tomato sauce', 1),
+(3, 'Hummus', 1),
+(4, 'Sparkling water', 1),
+(5, 'Peanut butter', 1);
 
 -- --------------------------------------------------------
 
@@ -155,6 +89,29 @@ INSERT INTO `list2` (`title`, `qty`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `non_family_list`
+--
+
+CREATE TABLE `non_family_list` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `qty` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `non_family_list`
+--
+
+INSERT INTO `non_family_list` (`id`, `title`, `qty`) VALUES
+(1, 'Meat', 12),
+(2, 'Sauces', 1),
+(3, 'Cheese', 1),
+(4, 'Mustard', 1),
+(5, 'Rice', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -177,8 +134,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `Nickname`, `Email`, `Phone`, `pass_word`, `reset_link_token`, `exp_date`, `email_verification_link`, `email_verified_at`, `family_list`, `Admin`) VALUES
-(1, 'tam', 'Tamer8@live.com', '0546762760', '123', '', '2021-08-07 22:36:50', '', NULL, '33', 1),
-(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', 'malek', '', '2021-08-08 01:27:46', '53b89c97de0788d005fad79f67a304e65195', '2021-08-08 00:27:46', '33', 0),
+(1, 'tam', 'Tamer8@live.com', '0546762760', '321', '', '0000-00-00 00:00:00', '', NULL, '33', 1),
+(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', '321', '', '2021-08-12 01:45:04', '53b89c97de0788d005fad79f67a304e67185', '2021-08-12 00:38:29', '0', 0),
 (3, 'tam', 'test@gmail.com', '123123123', '123', '', '2021-08-08 00:57:35', '', NULL, '0', 0);
 
 --
@@ -186,28 +143,10 @@ INSERT INTO `users` (`id`, `Nickname`, `Email`, `Phone`, `pass_word`, `reset_lin
 --
 
 --
--- Indexes for table `client`
---
-ALTER TABLE `client`
-  ADD UNIQUE KEY `unique` (`Email`) USING HASH;
-
---
 -- Indexes for table `family_list`
 --
 ALTER TABLE `family_list`
-  ADD PRIMARY KEY (`title`);
-
---
--- Indexes for table `final_list`
---
-ALTER TABLE `final_list`
-  ADD PRIMARY KEY (`title`);
-
---
--- Indexes for table `items`
---
-ALTER TABLE `items`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`,`title`);
 
 --
 -- Indexes for table `list`
@@ -222,6 +161,12 @@ ALTER TABLE `list2`
   ADD PRIMARY KEY (`title`);
 
 --
+-- Indexes for table `non_family_list`
+--
+ALTER TABLE `non_family_list`
+  ADD PRIMARY KEY (`id`,`title`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -233,10 +178,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT for table `family_list`
 --
-ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `family_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `non_family_list`
+--
+ALTER TABLE `non_family_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
