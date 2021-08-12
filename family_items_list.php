@@ -131,7 +131,7 @@ include 'dbConnection.php';
 			<div class="modal-content">
 				<form id="user_form">
 					<div class="modal-header">
-						<h4 class="modal-title">Add User</h4>
+						<h4 class="modal-title">Add Item</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
@@ -159,7 +159,7 @@ include 'dbConnection.php';
 			<div class="modal-content">
 				<form id="update_form">
 					<div class="modal-header">
-						<h4 class="modal-title">Edit User</h4>
+						<h4 class="modal-title">Edit Item</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
@@ -189,7 +189,7 @@ include 'dbConnection.php';
 				<form>
 
 					<div class="modal-header">
-						<h4 class="modal-title">Delete User</h4>
+						<h4 class="modal-title">Delete Item</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
