@@ -34,6 +34,35 @@ include 'dbConnection.php';
 		</nav>
 		<h1 class="band-name band-name-large">Shopping List</h1>
 		</div>
+		<?php
+		session_start();
+		if (!isset($_SESSION['Email'])) {
+			echo "<script>alert('You Must Login First!!');window.location.href='Sign_in.php';</script>";
+		}
+		?>
+		<div id="login">
+			<?php
+			if (isset($_SESSION['Email'])) { //test if we have a login username
+				print "Hello, " . $_SESSION["Email"];
+
+			?>
+				<a href="logout.php"><br>Logout</a>
+				<?php
+				if (isset($_SESSION["Admin"])) //if the client is admin
+					if ($_SESSION["Admin"] == 1) {
+				?>
+					<a href="family-members-control.php">Admin Privileges</a>
+				<?php
+					} else {
+				?>
+					<a href="family_request_forum.php">Family Member Request</a>
+				<?php
+					}
+				?>
+
+			<?php
+			}
+			?>
 	</header><br><br>
 	<div class="container">
 		<p id="success"></p>

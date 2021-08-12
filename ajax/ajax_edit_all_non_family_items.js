@@ -3,7 +3,7 @@ $(document).on('click','#btn-add',function(e) {
     $.ajax({
         data: data,
         type: "post",
-        url: "save_items.php",
+        url: "edit_all_purchased_non_family_items.php",
         success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.statusCode==200){
@@ -31,7 +31,7 @@ $(document).on('click','#update',function(e) {
     $.ajax({
         data: data,
         type: "post",
-        url: "save_items.php",
+        url: "edit_all_purchased_non_family_items.php",
         success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.statusCode==200){
@@ -52,7 +52,7 @@ $(document).on("click", ".delete", function() {
 });
 $(document).on("click", "#delete", function() { 
     $.ajax({
-        url: "save_items.php",
+        url: "edit_all_purchased_non_family_items.php",
         type: "POST",
         cache: false,
         data:{
@@ -82,7 +82,7 @@ $(document).on("click", "#delete_multiple", function() {
             console.log(selected_values);
             $.ajax({
                 type: "POST",
-                url: "save_items.php",
+                url: "edit_all_purchased_non_family_items.php",
                 cache:false,
                 data:{
                     type: 4,						

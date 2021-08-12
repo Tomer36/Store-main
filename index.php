@@ -32,6 +32,9 @@
         <h1 class="band-name band-name-large">Shopping List</h1>
         <?php
         session_start();
+        if (!isset($_SESSION['Email'])) {
+            echo "<script>alert('You Must Login First!!');window.location.href='Sign_in.php';</script>";
+        }
         ?>
         <div id="login">
             <?php
@@ -62,7 +65,18 @@
     <nav class="secondary-nav nav">
         <ul>
             <li><button id="ShowBtn" onclick="show()" value="Show Recommended Items">Show Recommended Items</button></li>
-            <button class="btn btn-secondary show-prev" onclick="location.href='items_list.php';" value="item1">Edit Items List</button>
+            <?php
+            if (isset($_SESSION["family_list"]))
+                if ($_SESSION["family_list"] == '33') {
+            ?>
+                <button class="btn btn-secondary show-prev" onclick="location.href='family_items_list.php';" value="item1">Edit All Purchased Items</button>
+            <?php
+
+                } else { ?>
+                <button class="btn btn-secondary show-prev" onclick="location.href='non_family_items_list.php';" value="item1">Edit All Purchased Items</button>
+            <?php
+                }
+            ?>
         </ul>
     </nav>
     <hr class="solid">

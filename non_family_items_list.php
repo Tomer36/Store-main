@@ -17,7 +17,7 @@ include 'dbConnection.php';
 	<script src="store.js" async></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="ajax/ajax.js"></script>
+	<script src="ajax/ajax_edit_all_non_family_items.js"></script>
 </head>
 
 <body>
@@ -34,6 +34,35 @@ include 'dbConnection.php';
 		</nav>
 		<h1 class="band-name band-name-large">Shopping List</h1>
 		</div>
+		<?php
+		session_start();
+		if (!isset($_SESSION['Email'])) {
+			echo "<script>alert('You Must Login First!!');window.location.href='Sign_in.php';</script>";
+		}
+		?>
+		<div id="login">
+			<?php
+			if (isset($_SESSION['Email'])) { //test if we have a login username
+				print "Hello, " . $_SESSION["Email"];
+
+			?>
+				<a href="logout.php"><br>Logout</a>
+				<?php
+				if (isset($_SESSION["Admin"])) //if the client is admin
+					if ($_SESSION["Admin"] == 1) {
+				?>
+					<a href="family-members-control.php">Admin Privileges</a>
+				<?php
+					} else {
+				?>
+					<a href="family_request_forum.php">Family Member Request</a>
+				<?php
+					}
+				?>
+
+			<?php
+			}
+			?>
 	</header><br><br>
 	<div class="container">
 		<p id="success"></p>
@@ -41,7 +70,7 @@ include 'dbConnection.php';
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Items <b>List</b></h2>
+						<h2>Non Family Items <b>List</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" id="addnew" data-toggle="modal"><i class="material-icons"></i> <span>Add New User</span></a>
@@ -66,7 +95,7 @@ include 'dbConnection.php';
 				<tbody>
 
 					<?php
-					$result = mysqli_query($conn, "SELECT * FROM items");
+					$result = mysqli_query($conn, "SELECT * FROM non_family_list");
 					$i = 1;
 					while ($row = mysqli_fetch_array($result)) {
 					?>

@@ -8,7 +8,7 @@ if (isset($_SESSION["family_list"]))
 		$sql = "INSERT INTO `family_list`( `title`, `qty` ) 
 	VALUES ('$title','$qty')";
 	} else {
-		$sql = "INSERT INTO `items`( `title`, `qty` ) 
+		$sql = "INSERT INTO `non_family_list`( `title`, `qty` ) 
 	VALUES ('$title','$qty')";
 	}
 if (mysqli_query($conn, $sql)) {
