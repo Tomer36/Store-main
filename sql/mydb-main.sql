@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2021 at 03:49 AM
+-- Generation Time: Aug 12, 2021 at 04:21 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -38,7 +38,7 @@ CREATE TABLE `family_list` (
 --
 
 INSERT INTO `family_list` (`id`, `title`, `qty`) VALUES
-(1, 'Tuna', 22),
+(1, 'Salmon', 5),
 (2, 'Tomato sauce', 1),
 (3, 'Hummus', 1),
 (4, 'Sparkling water', 1),
@@ -135,8 +135,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `Nickname`, `Email`, `Phone`, `pass_word`, `reset_link_token`, `exp_date`, `email_verification_link`, `email_verified_at`, `family_list`, `Admin`) VALUES
 (1, 'tam', 'Tamer8@live.com', '0546762760', '321', '', '0000-00-00 00:00:00', '', NULL, '33', 1),
-(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', '321', '', '2021-08-12 01:45:04', '53b89c97de0788d005fad79f67a304e67185', '2021-08-12 00:38:29', '0', 0),
-(3, 'tam', 'test@gmail.com', '123123123', '123', '', '2021-08-08 00:57:35', '', NULL, '0', 0);
+(2, 'test', 'battlefrogontherun@gmail.com', '0546762760', '123', '', '2021-08-12 14:09:27', '53b89c97de0788d005fad79f67a304e63200', '2021-08-12 12:54:22', '0', 0),
+(4, 'test', 'test1@gmail.com', '123456789', '123', '', '2021-08-12 14:16:19', '', NULL, '0', 0);
 
 --
 -- Indexes for dumped tables
@@ -193,7 +193,7 @@ ALTER TABLE `non_family_list`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
